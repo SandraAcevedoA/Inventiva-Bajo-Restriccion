@@ -40,6 +40,8 @@ The illustrations used in the artifact are original workshop graphics or reinter
 
 Created by **Sandra Acevedo**. Licensed under [Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0)](LICENSE), the same license as the series.
 
+The Multiverse School and Liz Howard may freely use and adapt everything Sandra Acevedo created here.
+
 ---
 
 ## Español
@@ -77,3 +79,5 @@ Las ilustraciones del artefacto son gráficos originales del workshop o reinterp
 ### Autoría y licencia
 
 Creado por **Sandra Acevedo**. Publicado bajo licencia [Creative Commons Atribución-NoComercial-CompartirIgual 4.0 Internacional (CC BY-NC-SA 4.0)](LICENSE), la misma de la serie.
+
+The Multiverse School y Liz Howard pueden usar y adaptar libremente todo lo que Sandra Acevedo creó aquí.
