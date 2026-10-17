@@ -83,6 +83,7 @@ No se requiere experiencia previa en electrónica, programación, ingeniería o 
 No es necesario construir físicamente el prototipo durante la sesión.
 
 ---
+[Abre Recorrido](https://themultiverse.school/x/inventiva-bajo-restriccion)
 
 # BLOQUE 0 · El objeto que murió
 **15 min**
@@ -243,10 +244,9 @@ Aquí aparece una idea que debe mantenerse durante todo el workshop:
 **el objeto que buscamos puede ser un módulo puente o una interfaz, no necesariamente el componente final.**
 
 ---
+# Mapa conceptual 
 
-### [IFRAME · GRAFO DE CONCEPTOS]
-
-**Insertar aquí iframe correspondiente al grafo conceptual.**
+**Grafo Interactivo : Cognición, creatividad y mirada funcional:** 
 
 Nodos sugeridos visibles:
 
@@ -258,8 +258,10 @@ Nodos sugeridos visibles:
 - component
 - architecture
 
-`<!-- IFRAME: GRAFO CONCEPTOS -->`
 
+<iframe src="https://www.acevedology.com/notes/inventiva-bajo-restriccion/cognicion-creatividad-mirada-funcional/01-mapa-conceptual" width="100%" height="600" frameborder="0" style="border:1px solid #30363d; border-radius:12px;"></iframe>
+
+> **Si el grafo no carga arriba**, ábrelo directamente: [Grafo interactivo · Cognición, creatividad y mirada funcional](https://www.acevedology.com/notes/inventiva-bajo-restriccion/cognicion-creatividad-mirada-funcional/01-mapa-conceptual)
 ---
 
 # BLOQUE 2 · Primera ventana histórica
@@ -283,9 +285,10 @@ Mostrar uno o dos casos y volver al objeto.
 
 ---
 
-### [IFRAME · GRAFO DE FENÓMENOS DE INVENTIVA]
+# Mapa conceptual 
 
-**Insertar aquí iframe correspondiente al grafo de fenómenos de inventiva bajo restricción.**
+**Grafo Interactivo : Fenómenos de inventiva bajo restricción:** 
+
 
 Posibles entradas:
 
@@ -298,7 +301,9 @@ Posibles entradas:
 - sustitución
 - adaptación
 
-`<!-- IFRAME: GRAFO FENOMENOS INVENTIVA -->`
+<iframe src="https://www.acevedology.com/notes/inventiva-bajo-restriccion/fen%C3%B3menos-de-inventiva-bajo-restricci%C3%B3n" width="100%" height="600" frameborder="0" style="border:1px solid #30363d; border-radius:12px;"></iframe>
+
+> **Si el grafo no carga arriba**, ábrelo directamente: [Grafo interactivo · Fenómenos de inventiva bajo restricción](https://www.acevedology.com/notes/inventiva-bajo-restriccion/fen%C3%B3menos-de-inventiva-bajo-restricci%C3%B3n)
 
 ---
 
@@ -399,9 +404,9 @@ La IA puede:
 
 ---
 
-### [IFRAME · GRAFO DE CONCEPTOS]
+### Mapa conceptual 
 
-**Insertar aquí nuevamente iframe al grafo conceptual, enfocado en:**
+**Grafo Interactivo : Cognición, creatividad y mirada funcional:** 
 
 - functional fixedness
 - Generic Parts Technique
@@ -411,25 +416,13 @@ La IA puede:
 - form
 - structure
 
-`<!-- IFRAME: GRAFO CONCEPTOS / FUNCTIONAL FIXEDNESS + GPT -->`
+<iframe src="https://www.acevedology.com/notes/inventiva-bajo-restriccion/cognicion-creatividad-mirada-funcional/01-mapa-conceptual" width="100%" height="600" frameborder="0" style="border:1px solid #30363d; border-radius:12px;"></iframe>
+
+> **Si el grafo no carga arriba**, ábrelo directamente: [Grafo interactivo · Cognición, creatividad y mirada funcional](https://www.acevedology.com/notes/inventiva-bajo-restriccion/cognicion-creatividad-mirada-funcional/01-mapa-conceptual)
 
 ---
 
-### [IFRAME · GRAFO DE TÉCNICAS]
 
-**Insertar aquí iframe correspondiente al grafo de técnicas.**
-
-Técnicas relacionadas:
-
-- functional decomposition
-- Generic Parts Technique
-- constraint relaxation
-- substitution
-- functional abstraction
-
-`<!-- IFRAME: GRAFO TECNICAS -->`
-
----
 
 # PAUSA
 **15 min**
@@ -621,11 +614,9 @@ La IA no convierte una hipótesis en documentación.
 
 ---
 
-### [IFRAME · GRAFO DE CONCEPTOS]
+### Mapa conceptual · Cognición, creatividad y mirada funcional
 
-**Insertar aquí iframe al grafo conceptual.**
-
-Foco sugerido:
+Foco para este bloque:
 
 - exaptation
 - modular exaptation
@@ -634,26 +625,11 @@ Foco sugerido:
 - bypass
 - interfaces
 - modules
+- functional decomposition
 
-`<!-- IFRAME: GRAFO CONCEPTOS / MODULAR EXAPTATION -->`
+<iframe src="https://www.acevedology.com/notes/inventiva-bajo-restriccion/cognicion-creatividad-mirada-funcional/01-mapa-conceptual" width="100%" height="600" frameborder="0" style="border:1px solid #30363d; border-radius:12px;"></iframe>
 
----
-
-### [IFRAME · GRAFO DE TÉCNICAS]
-
-**Insertar aquí iframe al grafo de técnicas.**
-
-Foco:
-
-- modular reuse
-- donor systems
-- substitution
-- bypass
-- recombination
-- scavenging
-- adaptation
-
-`<!-- IFRAME: GRAFO TECNICAS / MODULAR EXAPTATION -->`
+> **Si el grafo no carga arriba**, ábrelo directamente: [Grafo interactivo · Cognición, creatividad y mirada funcional](https://www.acevedology.com/notes/inventiva-bajo-restriccion/cognicion-creatividad-mirada-funcional/01-mapa-conceptual)
 
 ---
 
@@ -869,23 +845,20 @@ No queremos convertir la actividad en:
 
 ---
 
-### [IFRAME · GRAFO DE TÉCNICAS]
+### Mapa de apoyo · Cognición, creatividad y mirada funcional
 
-**Insertar aquí iframe principal del grafo de técnicas.**
-
-Éste es el momento más importante para que el participante pueda consultar:
+Durante la actividad central, este mapa reúne las operaciones cognitivas y técnicas que ya aparecieron en el workshop:
 
 - functional decomposition
 - Generic Parts Technique
-- substitution
-- bypass
-- adaptation
-- recombination
-- modular exaptation
-- scavenging
 - constraint relaxation
+- functional abstraction
+- modular exaptation
+- recombination
 
-`<!-- IFRAME: GRAFO TECNICAS / ACTIVIDAD CENTRAL -->`
+<iframe src="https://www.acevedology.com/notes/inventiva-bajo-restriccion/cognicion-creatividad-mirada-funcional/01-mapa-conceptual" width="100%" height="600" frameborder="0" style="border:1px solid #30363d; border-radius:12px;"></iframe>
+
+> **Si el grafo no carga arriba**, ábrelo directamente: [Grafo interactivo · Cognición, creatividad y mirada funcional](https://www.acevedology.com/notes/inventiva-bajo-restriccion/cognicion-creatividad-mirada-funcional/01-mapa-conceptual)
 
 ---
 
@@ -929,13 +902,13 @@ También desaparecen o se vuelven menos visibles cuando:
 
 ---
 
-### [IFRAME · GRAFO DE FENÓMENOS DE INVENTIVA]
-
-**Insertar aquí nuevamente iframe del grafo de fenómenos de inventiva bajo restricción.**
+### Grafo interactivo · Fenómenos de inventiva bajo restricción
 
 Usarlo para conectar distintas geografías, épocas y condiciones.
 
-`<!-- IFRAME: GRAFO FENOMENOS / CIERRE HISTORICO -->`
+<iframe src="https://www.acevedology.com/notes/inventiva-bajo-restriccion/fen%C3%B3menos-de-inventiva-bajo-restricci%C3%B3n" width="100%" height="600" frameborder="0" style="border:1px solid #30363d; border-radius:12px;"></iframe>
+
+> **Si el grafo no carga arriba**, ábrelo directamente: [Grafo interactivo · Fenómenos de inventiva bajo restricción](https://www.acevedology.com/notes/inventiva-bajo-restriccion/fen%C3%B3menos-de-inventiva-bajo-restricci%C3%B3n)
 
 ---
 
@@ -981,15 +954,13 @@ Basta con dejar visible que:
 
 ---
 
-### [IFRAME FINAL · GRAFO DESOBEDIENCIA TECNOLÓGICA]
+### Grafo final · Desobediencia tecnológica
 
-**Insertar aquí el iframe completo del grafo de Desobediencia Tecnológica.**
+Este es el grafo principal del cierre y queda disponible para exploración libre después de la sesión.
 
-Este es el grafo final y principal del cierre.
+<iframe src="https://www.acevedology.com/notes/inventiva-bajo-restriccion/00-technological-disobedience-index" width="100%" height="600" frameborder="0" style="border:1px solid #30363d; border-radius:12px;"></iframe>
 
-Debe poder explorarse libremente después de la sesión.
-
-`<!-- IFRAME: GRAFO DESOBEDIENCIA TECNOLOGICA -->`
+> **Si el grafo no carga arriba**, ábrelo directamente: [Grafo interactivo · Desobediencia tecnológica](https://www.acevedology.com/notes/inventiva-bajo-restriccion/00-technological-disobedience-index)
 
 ---
 
@@ -1302,12 +1273,27 @@ Y la IA acompaña:
 ↓
 **desarrollar arquitectura**
 
-Los espacios de Quartz quedan separados así:
+Los espacios de Quartz publicados quedan separados así:
 
-**Conceptos** → cuando se introduce teoría.  
-**Fenómenos de inventiva** → cuando se introduce contexto histórico.  
-**Técnicas** → junto a ejercicios y actividad.  
-**Desobediencia tecnológica** → al final como corpus latinoamericano documentado.
+**Cognición, creatividad y mirada funcional** → conceptos y operaciones usadas en el workshop: razonamiento funcional, descomposición funcional, fijación funcional, Generic Parts Technique, constraint relaxation, combinación conceptual y modular exaptation.  
+**Fenómenos de inventiva bajo restricción** → contexto histórico y comparativo.  
+**Desobediencia tecnológica** → corpus latinoamericano documentado para el cierre.  
+**Clean-room, reimplementation and interoperability** → familia publicada en el corpus general de Inventiva Bajo Restricción, pero no se embebe en este recorrido de tres horas porque no corresponde al arco pedagógico de esta sesión.
+
+Índice general de los grafos: [https://www.acevedology.com/notes/inventiva-bajo-restriccion/](https://www.acevedology.com/notes/inventiva-bajo-restriccion/)
+
+---
+# RECURSOS:
+- [Índice general de grafos Quartz](https://www.acevedology.com/notes/inventiva-bajo-restriccion/)
+- [Cognición, creatividad y mirada funcional](https://www.acevedology.com/notes/inventiva-bajo-restriccion/cognicion-creatividad-mirada-funcional/01-mapa-conceptual)
+- [Fenómenos de inventiva bajo restricción](https://www.acevedology.com/notes/inventiva-bajo-restriccion/fen%C3%B3menos-de-inventiva-bajo-restricci%C3%B3n)
+- [Desobediencia tecnológica](https://www.acevedology.com/notes/inventiva-bajo-restriccion/00-technological-disobedience-index)
+- [Clean-room, reimplementation and interoperability](https://www.acevedology.com/notes/inventiva-bajo-restriccion/clean-room-reimplementation/00-clean-room-reimplementation-index)
+- [Recorrido del Workshop](https://themultiverse.school/x/inventiva-bajo-restriccion)
+- [Vocabulario Funcional](https://docs.themultiverse.school/s/bPaeiacZl) 
+- [Recursos Identificacion y Desarme](https://docs.themultiverse.school/s/8IKGXCnQO)
+- [Glosario Razonamiento Funcional](https://docs.themultiverse.school/s/LDSt7Zbzn)
+- [microdocumental sobre Desobediencia Tecnologica](https://youtu.be/v-XS4aueDUg?si=smaotFFO_x1RQexF)
 
 ---
 
