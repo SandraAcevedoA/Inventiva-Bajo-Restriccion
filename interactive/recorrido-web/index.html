@@ -140,6 +140,9 @@ main.page-wrapper>h1{display:none}
 .lb.l{transform:translate(-100%,-50%);text-align:right}
 .lb.r{transform:translate(0,-50%)}
 .lbs.on .lb{opacity:1}
+.lbs.hab .lb{color:var(--fg-d)}
+.an.hab .ld,.an.hab .dot{stroke:var(--fg-d)}
+.anl.hab li{color:var(--fg-d)}
 .lb i{font-style:normal;color:var(--fg-d);font-weight:400}
 @media(prefers-reduced-motion:reduce){.an path,.lb,.tr,.pn{transition:none!important}}
 .flc{position:absolute;top:50%;transform:translateY(-50%);width:var(--gut);height:72px;display:flex;align-items:center;justify-content:center;background:none;border:none;color:var(--fg-d);cursor:pointer;z-index:3;border-radius:var(--r)}
@@ -531,7 +534,7 @@ var DOCS=[
   ['Syllabus del workshop','https://docs.themultiverse.school/s/WYMONIN3Q']
 ];
 var BORRADOR=true;
-var SK='ibr2-v1';
+var SK='ibr2-v2';
 var VISTAS=['situacion','inventiva','fenomenos','mirada','desobediencia','materiales','cleanroom'];
 
 var root=document.getElementById('ibr');
@@ -543,7 +546,7 @@ function esc(s){return String(s).replace(/[&<>"]/g,function(c){return{'&':'&amp;
 /* ── estado mínimo ── */
 var S={v:'situacion',s:0,f:false};
 function guardar(){try{localStorage.setItem(SK,JSON.stringify(S))}catch(e){}}
-function cargar(){try{var x=JSON.parse(localStorage.getItem(SK)||'null');if(x&&typeof x==='object'){if(VISTAS.indexOf(x.v)>=0)S.v=x.v;if(x.s>=0&&x.s<=6)S.s=x.s|0;S.f=!!x.f}}catch(e){}}
+function cargar(){try{var x=JSON.parse(localStorage.getItem(SK)||'null');if(x&&typeof x==='object'){if(VISTAS.indexOf(x.v)>=0)S.v=x.v;if(x.s>=0&&x.s<=FIN)S.s=x.s|0;S.f=!!x.f}}catch(e){}}
 
 /* ── trazo a mano: Catmull-Rom sobre puntos densificados con un pulso pequeño y estable ── */
 function rng(seed){var s=(seed*2654435761)>>>0||1;return function(){s^=s<<13;s>>>=0;s^=s>>>17;s^=s<<5;s>>>=0;return s/4294967296}}
@@ -578,7 +581,17 @@ var OBJ={
 /* ── las tres escenas: dónde va cada objeto, qué se lee y dónde se escribe ── */
 // objs: [objeto, x, y, escala] · an: [texto, objeto, punto en la imagen, posición de la etiqueta en el escenario 1600×900, lado]
 var ESC={
-  caf:{objs:[['caf',600,150,.8]],nombres:[['cafetera',800,128]],vb:'560 80 480 780',an:[
+  caf:{objs:[['caf',600,150,.8]],nombres:[['cafetera',800,128]],vb:'560 80 480 780',hab:[
+    ['tapa','caf',[250,50],[540,180],'l'],
+    ['cabezal','caf',[150,200],[540,280],'l'],
+    ['filtro','caf',[150,315],[540,380],'l'],
+    ['espacio para la taza','caf',[240,450],[540,510],'l'],
+    ['bandeja de goteo','caf',[200,740],[540,740],'l'],
+    ['bisagra','caf',[462,95],[1100,200],'r'],
+    ['salida del café','caf',[240,333],[1100,430],'r'],
+    ['depósito de agua','caf',[420,450],[1100,520],'r'],
+    ['botones','caf',[441,602],[1100,630],'r']
+  ],an:[
     ['ranura','caf',[118,100],[540,230],'l'],
     ['volumen hueco','caf',[150,200],[540,320],'l'],
     ['forma convexa','caf',[150,315],[540,410],'l'],
@@ -590,7 +603,16 @@ var ESC={
     ['plástico rígido','caf',[420,450],[1100,520],'r'],
     ['pieza circular','caf',[441,602],[1100,630],'r']
   ]},
-  tel:{objs:[['tel',668,150,.74]],nombres:[['teléfono',800,132]],vb:'620 90 360 740',an:[
+  tel:{objs:[['tel',668,150,.74]],nombres:[['teléfono',800,132]],vb:'620 90 360 740',hab:[
+    ['botones laterales','tel',[15,190],[560,290],'l'],
+    ['pantalla','tel',[180,500],[560,520],'l'],
+    ['botón de inicio','tel',[213,835],[560,720],'l'],
+    ['micrófono','tel',[130,880],[560,800],'l'],
+    ['parlante','tel',[205,58],[1060,160],'r'],
+    ['cámara','tel',[272,77],[1060,230],'r'],
+    ['carcasa','tel',[350,600],[1060,560],'r'],
+    ['puerto de carga','tel',[225,893],[1060,800],'r']
+  ],an:[
     ['muestra información','tel',[90,128],[560,230],'l'],
     ['procesa información','tel',[70,248],[560,320],'l'],
     ['calcula','tel',[195,284],[560,400],'l'],
@@ -619,8 +641,10 @@ var ESC={
     ['superficie térmica','caf',[200,740],[1150,850],'r']
   ],flujos:[['display',[626,430]],['sensores',[620,500]],['conectividad',[650,392]],['contenedor',[900,470]],['superficie térmica',[872,540]]],hip:[760,470,140,105]}
 };
-// estado → escena y lectura revelada
-var EST=[[null,0],['caf',0],['caf',1],['tel',0],['tel',1],['mix',0],['mix',1]];
+// estado → escena y nivel de lectura: 0 = solo el nombre, 1 = descripción habitual, 2 = la técnica (en el conjunto, 1 = recombinación)
+var EST=[[null,0],['caf',0],['caf',1],['caf',2],['tel',0],['tel',1],['tel',2],['mix',0],['mix',1]];
+var FIN=EST.length-1;
+function nivelTecnica(k){return k==='mix'?1:2}
 var FALTA=[['Energía','¿Cómo se alimenta?'],['Interface','¿Cómo se comunican o conectan las partes?'],['Dimensión','¿Encajan físicamente?'],['Montaje','¿Cómo se sujetan?'],['Control','¿Qué coordina su comportamiento?'],['Compatibilidad','¿Pueden funcionar juntas?'],['Evidencia','¿Qué sabemos y qué estamos suponiendo?'],['Seguridad','¿Qué debe verificar una persona con expertise?']];
 
 function tp(o,p){return[o[1]+p[0]*o[3],o[2]+p[1]*o[3]]}
@@ -637,18 +661,18 @@ function dibujoObjeto(o,seedBase){
   return g;
 }
 function escena(){
-  var sc=$('sc'),lbs=$('lbs'),anl=$('anl'),st=EST[S.s],k=st[0],rev=!!st[1],h='',lh='',li='';
+  var sc=$('sc'),lbs=$('lbs'),anl=$('anl'),st=EST[S.s],k=st[0],rev=!!k&&st[1]===nivelTecnica(k),hab=!!k&&!rev&&st[1]===1,h='',lh='',li='';
   var mini=angosto.matches;
   if(!k){
     sc.setAttribute('viewBox',mini?'560 200 480 500':'0 0 1600 900');
     h='<g class="ob" id="obj" role="button" tabindex="0" aria-label="Empezar"><rect class="obh" x="560" y="100" width="480" height="720"/><text class="qq" x="800" y="640">?</text></g>';
-    sc.innerHTML=h;lbs.innerHTML='';anl.innerHTML='';lbs.classList.remove('on');
+    sc.innerHTML=h;lbs.innerHTML='';anl.innerHTML='';lbs.classList.remove('on','hab');
     return;
   }
   var e=ESC[k];
   sc.setAttribute('viewBox',mini?e.vb:'0 0 1600 900');
   var nombreObj=k==='mix'?'el conjunto':(k==='caf'?'la cafetera':'el teléfono');
-  h+='<g class="ob '+(k==='tel'?'tel ':'')+(rev?'rev':'')+'" id="obj" role="button" tabindex="0" aria-label="'+(rev?'Ocultar la lectura de ':'Revelar la lectura de ')+nombreObj+'">';
+  h+='<g class="ob '+(k==='tel'?'tel ':'')+(rev?'rev':'')+'" id="obj" role="button" tabindex="0" aria-label="'+(rev?(k==='mix'?'Ocultar la lectura de ':'Volver a la descripción habitual de '):(hab?'Revelar otra lectura de ':(k==='mix'?'Revelar la lectura de ':'Ver la descripción habitual de ')))+nombreObj+'">';
   e.objs.forEach(function(o,i){var d=OBJ[o[0]];h+='<g class="'+(o[0]==='tel'?'tel ':'')+(rev?'rev':'')+'" transform="translate('+o[1]+' '+o[2]+') scale('+o[3]+')"><rect class="obh" x="-20" y="-20" width="'+(d.w+40)+'" height="'+(d.h+40)+'"/>'+dibujoObjeto(o,11+i*101)+'</g>'});
   e.nombres.forEach(function(n,i){
     h+='<text class="nm" x="'+n[1]+'" y="'+n[2]+'">'+n[0]+'</text>';
@@ -656,11 +680,12 @@ function escena(){
   });
   if(k==='mix'&&!rev)h+='<text class="mas" x="780" y="500">+</text>';
   h+='</g>';
-  if(rev){
+  var ls=rev?e.an:(hab?e.hab:null);
+  if(ls){
     var vbw=mini?+e.vb.split(' ')[2]:1600,cw=sc.getBoundingClientRect().width;if(cw<10)cw=360;var ku=vbw/cw;
-    h+='<g class="an" id="an">';
-    if(e.hip){var hp=e.hip;h+='<path class="hip" d="'+linea(elip(hp[0],hp[1],hp[2],hp[3],26),77,2,26,true)+'"/><text class="hipt" x="'+hp[0]+'" y="'+(hp[1]-4)+'">un tercer sistema</text><text class="hips" x="'+hp[0]+'" y="'+(hp[1]+36)+'">todavía inexistente</text>'}
-    e.an.forEach(function(a,i){
+    h+='<g class="an'+(hab?' hab':'')+'" id="an">';
+    if(rev&&e.hip){var hp=e.hip;h+='<path class="hip" d="'+linea(elip(hp[0],hp[1],hp[2],hp[3],26),77,2,26,true)+'"/><text class="hipt" x="'+hp[0]+'" y="'+(hp[1]-4)+'">un tercer sistema</text><text class="hips" x="'+hp[0]+'" y="'+(hp[1]+36)+'">todavía inexistente</text>'}
+    ls.forEach(function(a,i){
       var o=objDe(e,a[1]),P=tp(o,a[2]),L=a[3],sx=L[0]+(a[4]==='l'?8:-8);
       if(!mini){
         var mx=sx+(P[0]-sx)*.4;
@@ -671,25 +696,27 @@ function escena(){
       }
       lh+='<span class="lb '+a[4]+'" style="left:'+(L[0]/16)+'%;top:'+(L[1]/9)+'%">'+esc(a[0])+'</span>';
     });
-    if(e.flujos&&!mini)e.flujos.forEach(function(f,i){var a=e.an.filter(function(x){return x[0]===f[0]})[0],P=tp(objDe(e,a[1]),a[2]);h+='<path class="ld fl" d="'+linea([P,[(P[0]+f[1][0])/2,(P[1]+f[1][1])/2+(i%2?-18:18)],f[1]],90+i,.8,30)+'"/>'});
+    if(rev&&e.flujos&&!mini)e.flujos.forEach(function(f,i){var a=e.an.filter(function(x){return x[0]===f[0]})[0],P=tp(objDe(e,a[1]),a[2]);h+='<path class="ld fl" d="'+linea([P,[(P[0]+f[1][0])/2,(P[1]+f[1][1])/2+(i%2?-18:18)],f[1]],90+i,.8,30)+'"/>'});
     h+='</g>';
     var grupo=null;
-    e.an.forEach(function(a,i){
+    ls.forEach(function(a,i){
       if(k==='mix'&&a[1]!==grupo){grupo=a[1];li+='<li class="gh">'+(a[1]==='tel'?'del teléfono':'de la cafetera')+'</li>'}
       li+='<li><b>'+(i+1)+'</b><span>'+esc(a[0])+'</span></li>';
     });
   }
   sc.innerHTML=h;lbs.innerHTML=lh;anl.innerHTML=li;
-  lbs.classList.remove('on');
-  if(rev){var an=$('an');requestAnimationFrame(function(){requestAnimationFrame(function(){if(an)an.classList.add('on');lbs.classList.add('on')})})}
+  lbs.classList.remove('on');lbs.classList.toggle('hab',hab);anl.classList.toggle('hab',hab);
+  if(ls){var an=$('an');requestAnimationFrame(function(){requestAnimationFrame(function(){if(an)an.classList.add('on');lbs.classList.add('on')})})}
 }
 
 var ESQ='<p class="esq"><svg viewBox="0 0 26 8" aria-hidden="true"><path class="ln" d="M1 4h24" style="stroke-dasharray:4 3"/></svg>esquema funcional · no representa la ubicación real de componentes</p>';
 var PIE=[
   '<p class="cap">Toca o haz clic en el signo para empezar.</p>',
-  '<p class="cap">Toca o haz clic en la cafetera para leerla de otra manera.</p>',
+  '<p class="cap">Toca o haz clic en la cafetera.</p>',
+  '<p class="q">Así la describiríamos normalmente: <span class="qa">cada parte se llama por su papel dentro de la cafetera.</span></p><p class="cap">Toca o haz clic otra vez para leerla de otra manera.</p>',
   '<p class="q">¿Puedo describir esta parte <span class="qa">sin decir para qué fue diseñada?</span></p><p class="cap">Y cuando corresponda: ¿puedo dividirla todavía más?</p><button class="lnk" type="button" data-go="mirada">Generic Parts Technique → Mirada funcional</button>',
-  '<p class="cap">Toca o haz clic en el teléfono. Esta vez no miramos materiales: miramos lo que hace.</p>',
+  '<p class="cap">Toca o haz clic en el teléfono.</p>',
+  '<p class="q">Así lo describiríamos normalmente: <span class="qa">por sus partes.</span></p><p class="cap">Toca o haz clic otra vez. Esta vez no miramos materiales: miramos lo que hace.</p>',
   ESQ+'<p class="ley">producto <svg viewBox="0 0 34 12" aria-hidden="true"><path class="ln" d="M1 6.5c8-1 18 .8 30-.5M26 1.5l5.5 4.6-5.8 4.3"/></svg> funciones <svg viewBox="0 0 34 12" aria-hidden="true"><path class="ln" d="M1 6.5c8-1 18 .8 30-.5M26 1.5l5.5 4.6-5.8 4.3"/></svg> <b>capacidades</b></p><p class="q">El teléfono desaparece como producto <span class="qa">y aparece como conjunto de capacidades.</span></p>',
   '<p class="q">¿Teléfono + cafetera?</p><p class="cap">Toca o haz clic en el conjunto.</p>',
   '<p class="q">Dos productos pueden convertirse en inventarios de capacidades <span class="qa">que pueden participar en un tercer sistema todavía inexistente.</span></p><p class="cap">Una hipótesis material, no un producto final.</p><button class="bt bs" type="button" id="falta" aria-expanded="false" aria-controls="fx">¿Qué falta para hacerlo real?</button>'+ESQ
@@ -699,17 +726,18 @@ function pintarEstado(){
   escena();
   $('pie').innerHTML=PIE[S.s];
   $('ant').disabled=S.s===0;
-  $('sig').disabled=S.s===6&&S.f;
+  $('sig').disabled=S.s===FIN&&S.f;
   [].forEach.call($('ticks').children,function(t,i){t.classList.toggle('ac',i===S.s);t.setAttribute('aria-current',i===S.s?'step':'false')});
   var fx=$('fx'),fb=$('falta');
-  if(S.s===6&&S.f){fx.hidden=false;requestAnimationFrame(function(){fx.classList.add('on')});if(fb){fb.setAttribute('aria-expanded','true');fb.hidden=true}}
+  if(S.s===FIN&&S.f){fx.hidden=false;requestAnimationFrame(function(){fx.classList.add('on')});if(fb){fb.setAttribute('aria-expanded','true');fb.hidden=true}}
   else{fx.hidden=true;fx.classList.remove('on')}
 }
-function ir(n){n=Math.max(0,Math.min(6,n));if(n!==6)S.f=false;S.s=n;guardar();pintarEstado()}
-function avanzar(){if(S.s===6){if(!S.f){S.f=true;guardar();pintarEstado();$('fx').scrollIntoView({behavior:'smooth',block:'nearest'})}return}ir(S.s+1)}
+function ir(n){n=Math.max(0,Math.min(FIN,n));if(n!==FIN)S.f=false;S.s=n;guardar();pintarEstado()}
+function avanzar(){if(S.s===FIN){if(!S.f){S.f=true;guardar();pintarEstado();$('fx').scrollIntoView({behavior:'smooth',block:'nearest'})}return}ir(S.s+1)}
 function tocarObjeto(){
   if(S.s===0)return ir(1);
-  if(EST[S.s][1])ir(S.s-1);else ir(S.s+1);
+  // avanza por las capas del objeto; desde la técnica vuelve un paso, para comparar con la capa anterior
+  var st=EST[S.s];if(st[1]===nivelTecnica(st[0]))ir(S.s-1);else ir(S.s+1);
 }
 
 /* ── vistas ── */
